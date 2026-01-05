@@ -1,0 +1,9 @@
+[user]
+    name = harutaka
+    email = 10650294+harutaka@users.noreply.github.com
+[init]
+    defaultBranch = main
+[credential]
+    helper = store
+[includeIf "gitdir:~/job/"]
+    path = "~/.gitconfig_job"
