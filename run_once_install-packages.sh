@@ -49,7 +49,7 @@ fi
 
 # etc
 sudo apt-get install -y -q build-essential jq
-sudo apt-get install -y -q fd-find ripgrep bat lsd fzf zoxide
+sudo apt-get install -y -q fd-find ripgrep bat lsd zoxide
 
 # Symbolic Links
 mkdir -p ~/.local/bin
@@ -58,6 +58,7 @@ ln -sf $(which batcat) ~/.local/bin/bat
 
 # miseコアパッケージ
 # chezmoiがmiseでインストールされている前提。miseがなければインストールもする。
+mise use -g fzf@latest
 mise use -g uv@latest
 mise use -g python@latest
 mise use -g node@lts
