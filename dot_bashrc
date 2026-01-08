@@ -133,7 +133,7 @@ LANG=ja_JP.UTF-8
 
 # for zoxide
 eval "$(fzf --bash)"
-eval "$(zoxide init bash --cmd cd)"
+eval "$(zoxide init bash)"
 
 # For mise
 eval "$(~/.local/bin/mise activate bash)"
