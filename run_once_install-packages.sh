@@ -14,7 +14,7 @@ else
   sudo apt-get install -y -q curl unzip
   curl -fsSL https://awscli.amazonaws.com/awscli-exe-linux-$(uname -m).zip -o /tmp/aws-cli.zip
   unzip -q -d /tmp /tmp/aws-cli.zip
-  /tmp/aws/install
+  sudo /tmp/aws/install
   rm -rf /tmp/aws
 fi
 
@@ -24,8 +24,8 @@ if [ $? = 0 ]; then
   echo "docker is already installed"
 else
   sudo apt-get install -y -q ca-certificates
-  install -m 0755 -d /etc/apt/keyrings
-  curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
+  sudo install -m 0755 -d /etc/apt/keyrings
+  sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
   sudo chmod a+r /etc/apt/keyrings/docker.asc
   echo \
     "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu \
@@ -37,8 +37,7 @@ else
 fi
 
 # Git
-which git
-if [ $? = 0 ]; then
+if [ -f /etc/apt/sources.list.d/git-core-ubuntu-ppa* ]; then
   echo "git is already installed"
 else
   sudo add-apt-repository -y ppa:git-core/ppa
