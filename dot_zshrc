@@ -1,0 +1,49 @@
+# ======= 基本設定 =======
+# 日本語ファイル名を扱えるようにする
+setopt extended_glob
+# バックグラウンドジョブの終了をすぐに通知する
+setopt notify
+
+# ======= 履歴(history)設定 =======
+HISTFILE=~/.zsh_history  # 履歴ファイルの場所
+HISTSIZE=10000           # メモリに保存する履歴の件数
+SAVEHIST=10000           # 履歴ファイルに保存する件数
+setopt hist_ignore_dups  # 直前のコマンドと同じ場合は履歴に追加しない
+setopt share_history     # 複数のターミナルで履歴を共有する
+
+# ======= 補完機能の有効化 =======
+# compinitを自動で読み込む
+autoload -U compinit
+compinit
+
+# 補完で大文字小文字を区別しない
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
+
+# 補完で選択できるようにする
+zstyle ':completion:*' menu select interactive
+setopt menu_complete
+
+# ======= 便利な関数とエイリアス =======
+# mkdirしてすぐにcdする
+function mkcd() {
+  mkdir -p "$1" && cd "$1"
+}
+
+# よく使うコマンドのエイリアス
+alias ls='lsd'
+alias ll='lsd -alF'
+alias la='lsd -A'
+alias cat='batcat -p'
+
+# ======= 特定ツール用設定 =======
+# for zoxide
+source <(fzf --zsh)
+eval "$(zoxide init zsh --cmd cd)"
+
+# for starship
+eval "$(starship init zsh)"
+
+# For mise
+eval "$(~/.local/bin/mise activate zsh)"
+export MISE_ENV_FILE=.env
+

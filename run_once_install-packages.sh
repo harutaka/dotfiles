@@ -46,9 +46,17 @@ else
   sudo apt-get install -y -q git
 fi
 
+# starship
+which starship
+if [ $? = 0 ]; then
+  echo "starship is already installed"
+else
+  curl -sS https://starship.rs/install.sh | sh
+fi
+
 # etc
 sudo apt-get install -y -q build-essential jq
-sudo apt-get install -y -q fd-find ripgrep bat lsd zoxide
+sudo apt-get install -y -q fd-find ripgrep bat lsd zoxide zsh
 
 # Symbolic Links
 mkdir -p ~/.local/bin
@@ -64,5 +72,7 @@ mise use -g node@lts
 mise use -g bun@latest
 
 # npmパッケージのインストール
-mise use -g npm:tldr
-mise use -g npm:@anthropic-ai/claude-code
+mise use -g npm:tldr@latest
+
+# デフォルトシェル切り替え
+sudo chsh -s $(which zsh)
