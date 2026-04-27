@@ -55,7 +55,7 @@ else
 fi
 
 # etc
-sudo apt-get install -y -q build-essential jq
+sudo apt-get install -y -q build-essential libicu-dev jq
 sudo apt-get install -y -q fd-find ripgrep bat lsd zoxide zsh
 
 # Symbolic Links
@@ -70,6 +70,7 @@ mise use -g uv@latest
 mise use -g python@latest
 mise use -g node@lts
 mise use -g bun@latest
+mise use -g edit@latest
 
 # npmパッケージのインストール
 mise use -g npm:tldr@latest
