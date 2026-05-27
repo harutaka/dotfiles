@@ -55,7 +55,7 @@ else
 fi
 
 # etc
-sudo apt-get install -y -q build-essential libicu-dev jq
+sudo apt-get install -y -q build-essential libicu-dev jq zip
 sudo apt-get install -y -q fd-find ripgrep bat lsd zoxide zsh
 
 # Symbolic Links
