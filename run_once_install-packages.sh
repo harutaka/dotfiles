@@ -46,7 +46,7 @@ if [ -f /etc/apt/sources.list.d/git-core-ubuntu-ppa* ]; then
   echo "git is already installed"
 else
   sudo add-apt-repository -y ppa:git-core/ppa
-  sudo apt-get updatefix
+  sudo apt-get update
   sudo apt-get install -y -q git
 fi
 
@@ -59,7 +59,7 @@ else
 fi
 
 # etc
-sudo apt-get install -y -q build-essential libicu-dev jq zip
+sudo apt-get install -y -q build-essential libicu-dev jq zip fzf
 sudo apt-get install -y -q fd-find ripgrep bat lsd zoxide zsh
 
 # Symbolic Links
@@ -69,7 +69,6 @@ ln -sf $(which batcat) ~/.local/bin/bat
 
 # miseコアパッケージ
 # chezmoiがmiseでインストールされている前提。miseがなければインストールもする。
-mise use -g fzf@latest
 mise use -g uv@latest
 mise use -g python@latest
 mise use -g node@lts
