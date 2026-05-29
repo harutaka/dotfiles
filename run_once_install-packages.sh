@@ -79,4 +79,4 @@ mise use -g edit@latest
 mise use -g npm:tldr@latest
 
 # デフォルトシェル切り替え
-sudo chsh -s $(which zsh)
+chsh -s $(which zsh)
