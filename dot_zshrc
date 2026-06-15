@@ -34,6 +34,7 @@ alias ls='lsd'
 alias ll='lsd -alF'
 alias la='lsd -A'
 alias cat='batcat -p'
+alias ba='batcat -p'
 
 # ======= 特定ツール用設定 =======
 # for zoxide
