@@ -2,90 +2,79 @@
 
 ## Get started
 
-### 1. Install chezmoi
+### 1. dotfiles リポジトリを clone
 
 ```bash
-mise use -g chezmoi@latest
+git clone https://github.com/harutaka/dotfiles.git ~/.dotfiles
 ```
 
-### 2. Apply dotfiles
+### 2. ツールのインストール
 
+```bash
+./run_once_install-packages.sh
 ```
-chezmoi init --apply harutaka
+
+### 3. mise をインストール
+
+```bash
+curl https://mise.run | sh
+echo "eval \"\$(~/.local/bin/mise activate bash)\"" >> ~/.bashrc
+source ~/.bashrc
 ```
+
+### 4. mise の初期設定
+
+```bash
+cp ~/.dotfiles/.config/mise/config.toml ~/.config/mise/config.toml
+```
+
+### 5. dotfiles の適用
+
+```bash
+mise dotfiles apply
+```
+
+### 6. local ファイルの適用・編集
+
+```bash
+cp ~/.dotfiles/.gitconfig_work.example ~/.gitconfig_work
+vim ~/.gitconfig_work
+```
+
+### 7. シェルの再起動
+
+```bash
+source ~/.zshrc
+```
+
 
 ## 開発方法
 
-### 初期化
+* 各設定ファイルはシンボリックリンクになっている。変更後はこまめにコミット・プッシュする。
+* miseの設定ファイル(config.toml)はシンボリックリンクではないので、変更後はリポジトリにも反映する。
 
-コードベースが`~/.local/share/chezmoi`に展開される。
-
-```bash
-chezmoi init harutaka
-```
-
-### 設定ファイルの配置
-
-シークレット情報などの変数は、`~/.config/chezmoi/chezmoi.toml`に定義する運用とする。
-
-```toml
-[data]
-  name = "hogehoge"
-```
-
-定義した変数は後述のテンプレートファイルにて以下のように使用する。
-
-```
-name = {{ .name }}
-```
-
-### ソースディレクトリへの移動
+### 既存ファイルを管理対象へ追加
+`mise dotfiles add` を使うと、追加できる。この時点ではシンボリックリンクは貼られない。
 
 ```bash
-chezmoi cd
+mise dotfiles add ~/.zshrc
 ```
 
-### 最新版の反映
+### 適用テスト
 
 ```bash
-chezmoi update
+mise dotfiles apply --dry-run
 ```
 
-### ファイル追加
+### 設定ファイルの適用
+この時点でシンボリックリンクが貼られる。
 
 ```bash
-# 通常
-chezmoi add ~/.vimrc
-# テンプレートファイルとして追加
-chezmoi add --template ~/.vimrc
-# 既存ファイルをテンプレートファイルにする
-chezmoi chattr +template ~/.zshrc
+mise dotfiles apply
 ```
 
-### ファイル編集
-
-直接編集してもよい。
+### 状態の確認
 
 ```bash
-chezmoi edit ~/.vimrc
-```
-
-### テンプレートの確認
-```bash
-# 単発
-chezmoi execute-template '{{ .chezmoi.hostname }}'
-# ファイル
-chezmoi execute-template < dot_vimrc.tmpl
-```
-
-### 変更確認
-
-```bash
-chezmoi diff
-```
-
-### 適用
-
-```bash
-chezmoi -v apply
+mise dotfiles status
 ```

@@ -1,0 +1,15 @@
+[tools]
+bun = "latest"
+chezmoi = "latest"
+edit = "latest"
+go = "latest"
+node = "lts"
+"npm:tldr" = "latest"
+python = "latest"
+uv = "latest"
+
+[dotfiles]
+"~/.vimrc" = { mode = "symlink" }
+"~/.bashrc" = { mode = "symlink" }
+"~/.gitconfig" = { mode = "symlink" }
+"~/.zshrc" = { mode = "symlink" }

@@ -67,16 +67,5 @@ mkdir -p ~/.local/bin
 ln -sf $(which fdfind) ~/.local/bin/fd
 ln -sf $(which batcat) ~/.local/bin/bat
 
-# miseコアパッケージ
-# chezmoiがmiseでインストールされている前提。miseがなければインストールもする。
-mise use -g uv@latest
-mise use -g python@latest
-mise use -g node@lts
-mise use -g bun@latest
-mise use -g edit@latest
-
-# npmパッケージのインストール
-mise use -g npm:tldr@latest
-
 # デフォルトシェル切り替え
 chsh -s $(which zsh)
