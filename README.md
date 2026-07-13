@@ -25,12 +25,14 @@ source ~/.bashrc
 ### 4. mise の初期設定
 
 ```bash
+mkdir -p ~/.config/mise
 cp ~/.dotfiles/.config/mise/config.toml ~/.config/mise/config.toml
 ```
 
-### 5. dotfiles の適用
+### 5. mise 管理ツールインストールと dotfiles の適用
 
 ```bash
+mise install
 mise dotfiles apply
 ```
 
@@ -41,10 +43,10 @@ cp ~/.dotfiles/.gitconfig_work.example ~/.gitconfig_work
 vim ~/.gitconfig_work
 ```
 
-### 7. シェルの再起動
+### 7. シェルを再ログイン
 
 ```bash
-source ~/.zshrc
+exec $SHELL -l
 ```
 
 
