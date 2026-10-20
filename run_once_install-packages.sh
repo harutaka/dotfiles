@@ -11,11 +11,7 @@ which aws
 if [ $? = 0 ]; then
   echo "aws cli is already installed"
 else
-  sudo apt-get install -y -q curl unzip
-  curl -fsSL https://awscli.amazonaws.com/awscli-exe-linux-$(uname -m).zip -o /tmp/aws-cli.zip
-  unzip -q -d /tmp /tmp/aws-cli.zip
-  sudo /tmp/aws/install
-  rm -rf /tmp/aws
+  curl -fsSL https://awscli.amazonaws.com/v2/install.sh | bash
 fi
 
 # Docker
