@@ -5,6 +5,7 @@ go = "latest"
 node = "lts"
 "npm:tldr" = "latest"
 python = "latest"
+terraform = "latest"
 uv = "latest"
 
 [dotfiles]
@@ -12,3 +13,9 @@ uv = "latest"
 "~/.bashrc" = { mode = "symlink" }
 "~/.gitconfig" = { mode = "symlink" }
 "~/.zshrc" = { mode = "symlink" }
+
+[settings]
+minimum_release_age = "3d"
+
+[settings.npm]
+package_manager = "bun"
